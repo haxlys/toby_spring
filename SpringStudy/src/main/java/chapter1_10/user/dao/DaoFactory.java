@@ -3,24 +3,38 @@ package chapter1_10.user.dao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration // 애플리케이션 컨텍스트 또는 빈 팩토리가 사용할 설정정보라는 표시
+import chapter1_11.user.dao.ConnectionMaker;
+import chapter1_11.user.dao.CountingConnectionMaker;
+import chapter1_11.user.dao.DConnectionMaker;
+import chapter1_11.user.dao.UserDao;
+
+@Configuration
 public class DaoFactory {
 	
-	@Bean // 오브젝트 생성을 담당하는 IoC용 메소드라는 표시
+	@Bean
 	public UserDao userDao(){
-		return new UserDao(connectionMaker());
+		return new UserDao(connectionMaker()); 
 	}
 	
-	public UserDao accountDao(){
-		return new UserDao(connectionMaker());
+	public UserDao accountDao(){ 
+		return new UserDao(connectionMaker()); 
 	}
 	
 	public UserDao messageDao(){
-		return new UserDao(connectionMaker());
+		return new UserDao(connectionMaker()); 
 	}
 	
 	@Bean
-	public ConnectionMaker connectionMaker(){
+	public ConnectionMaker connectionMaker() {
+		return new CountingConnectionMaker(realConnectionMaker());
+	}
+	
+	//public ConnectionMaker connectionMaker(){
+	public ConnectionMaker realConnectionMaker(){
 		return new DConnectionMaker();
 	}
+	
+	/*
+	 * 변경된 점은  connectionMaker 메소드 이름이 realConnectionMaker 바뀜
+	 */
 }

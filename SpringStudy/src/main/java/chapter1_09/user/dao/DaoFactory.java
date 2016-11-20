@@ -23,4 +23,8 @@ public class DaoFactory {
 	public ConnectionMaker connectionMaker(){
 		return new DConnectionMaker();
 	}
+	
+	/*
+	 * DB 접속 정보가 바뀐다면 connectionMaker() 의 리턴값만 변경해 주면된다.
+	 */
 }
