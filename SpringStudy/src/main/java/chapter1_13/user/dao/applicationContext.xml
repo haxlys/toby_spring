@@ -5,6 +5,11 @@
 		
 	<bean id="connectionMaker" class="chapter1_13.user.dao.DConnectionMaker"/>
 	
+	<!-- 
+	userDao 클래스 객체를 만들면서 property 태그의 설정을 수정자 메소드를 통해서 값을 넣어준다. 
+	userDao class에  setConnectionMaker 있는 것을 확인하자.
+	실제로 IDE 에서도 Ctrl 을 누른채 name="connectionMaker" 마우스를 올리면 setConnectionMaker에 링크가 걸리는 것을 확인할 수 있다.
+	-->
 	<bean id="userDao" class="chapter1_13.user.dao.UserDao">
 		<property name="connectionMaker" ref="connectionMaker" />
 	</bean>
