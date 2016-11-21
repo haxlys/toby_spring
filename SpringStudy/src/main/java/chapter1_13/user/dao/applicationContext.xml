@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 		
-	<bean id="connectionMaker" class="chapter1_12.user.dao.DConnectionMaker"/>
+	<bean id="connectionMaker" class="chapter1_13.user.dao.DConnectionMaker"/>
 	
-	<bean id="userDao" class="chapter1_12.user.dao.UserDao">
+	<bean id="userDao" class="chapter1_13.user.dao.UserDao">
 		<property name="connectionMaker" ref="connectionMaker" />
 	</bean>
 	
