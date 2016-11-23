@@ -24,7 +24,7 @@ public class UserDaoTest {
 		 * name 속성에서 맨앞에 set을 붙여주고 첫글자를 대문자로 하는 수정자 메소드를 호출하여 사용하고 있는 점을 명심해야 한다.
 		 */
 		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-		ApplicationContext context = new GenericXmlApplicationContext("chapter1_13/user/dao/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("chapter01/_13/user/dao/applicationContext.xml");
 		ApplicationContext context2 = new ClassPathXmlApplicationContext("applicationContext.xml", UserDao.class);
 		//ClassPathXmlApplicationContext 는 User.Dao.class 의 기준으로 부터 지정된 xml 파일을 찾는다.
 		

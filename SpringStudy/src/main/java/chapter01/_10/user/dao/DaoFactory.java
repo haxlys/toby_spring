@@ -3,10 +3,10 @@ package chapter01._10.user.dao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import chapter01._11.user.dao.ConnectionMaker;
-import chapter01._11.user.dao.CountingConnectionMaker;
-import chapter01._11.user.dao.DConnectionMaker;
-import chapter01._11.user.dao.UserDao;
+import chapter01._10.user.dao.ConnectionMaker;
+import chapter01._10.user.dao.CountingConnectionMaker;
+import chapter01._10.user.dao.DConnectionMaker;
+import chapter01._10.user.dao.UserDao;
 
 @Configuration
 public class DaoFactory {

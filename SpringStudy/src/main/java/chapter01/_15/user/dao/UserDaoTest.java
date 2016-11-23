@@ -15,7 +15,7 @@ public class UserDaoTest {
 		 * XML을 이용한 설정 방식으로 DataSource 인터페이스를 적용 했다.
 		 */
 		//ApplicationContext context = new AnnotationConfigApplicationContext(DaoFactory.class);
-		ApplicationContext context = new GenericXmlApplicationContext("chapter1_15/user/dao/applicationContext.xml");
+		ApplicationContext context = new GenericXmlApplicationContext("chapter01/_15/user/dao/applicationContext.xml");
 		
 		UserDao dao = context.getBean("userDao", UserDao.class);
 		
