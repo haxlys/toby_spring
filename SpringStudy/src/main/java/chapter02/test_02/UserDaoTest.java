@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import chapter01.user.domain.User;
+import chapter02.test.domain.User;
 
 public class UserDaoTest {
 
@@ -30,15 +30,17 @@ public class UserDaoTest {
 		UserDao dao = context.getBean("userDao", UserDao.class);
 		
 		User user = new User();
-		user.setId("test2_03");
+		user.setId("test2_04");
 		user.setName("백기선");
 		user.setPassword("married");
 		
-		dao.add(user);
+		dao.add(user); // 중복된 id를 등록하게 될 경우 여기서 에러가 날 것이다.
 		
 		User user2 = dao.get(user.getId());
-		
-		Assert.assertThat(user2.getName(), CoreMatchers.is(user.getName()));
+
+		// CoreMatchers.is() 는 Assert에서 사용하는 matcher로 assertThat()의 첫번쨰 인자와 값이 값이 같은지 비교한다.
+		// 만약 틀릴 경우 해당 코드에서 에러를 잡아낸다.
+		Assert.assertThat(user2.getName(), CoreMatchers.is("틀린이름")); 
 		Assert.assertThat(user2.getPassword(), CoreMatchers.is(user.getPassword()));
 		
 	}
