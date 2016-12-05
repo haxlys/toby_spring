@@ -1,4 +1,4 @@
-package chapter03.templet_06;
+package chapter03.templet_10;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,26 +6,23 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-public class UserDao {
-	
-	/**
-	 *  구체적인 클래스를 지정해주는 역할(책임)은 클라이언트(deleteAll() 메소드)에게 넘겼다.
-	 */
+import chapter03.templet_08.StatementStrategy;
 
+public class JdbcContext {
+	
 	private DataSource dataSource;
 	
 	public void setDataSource(DataSource dataSource){
 		this.dataSource = dataSource;
 	}
 	
-	public void jdbcContextWithStatementStarategy(StatementStrategy stmt) throws SQLException {
+	public void workWithStatementStarategy(StatementStrategy stmt) throws SQLException {
 		Connection c = null;
 		PreparedStatement ps = null;
 		
 		try{
-			c = dataSource.getConnection();
+			c = this.dataSource.getConnection();
 			
-			// 전략 패턴에 DI를 적용시킨 구조
 			ps = stmt.makePreparedStatement(c);
 			
 			ps.executeUpdate();
@@ -49,12 +46,5 @@ public class UserDao {
 		ps.close();
 		c.close();
 	}
-	
-	public void deleteAll() throws SQLException {
-		StatementStrategy st = new DeleteAllStatement(); // 선정한 전략 클래스의 오브젝트 생성
-		jdbcContextWithStatementStarategy(st);	// 컨텍스트 호출. 전략 오브젝트 전달
-	}
-	
-	
 	
 }
